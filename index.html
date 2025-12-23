@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter Card Test Page</title>
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@vizard_ai">
+    <meta name="twitter:title" content="My 2025 Vizard Report Test">
+    <meta name="twitter:description" content="This is a test for verifying Twitter Card implementation.">
+    <meta name="twitter:image" content="https://cdn-docs.vizard.ai/0-web-static/image/home/who_we_help_image2.webp">
+
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background: #f0f2f5; }
+        .card { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; }
+        .btn {
+            display: inline-block;
+            background-color: #1DA1F2; /* Twitter Blue */
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn:hover { background-color: #0d8ddb; }
+        p { color: #666; margin-bottom: 20px; }
+        img { max-width: 100%; height: auto; border-radius: 8px; margin-top: 10px; opacity: 0.8; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>Twitter Card PoC</h1>
+    <p>此页面模拟了后端动态生成的“落地页”。</p>
+    <p>点击下方按钮，测试分享流程。</p>
+
+    <div style="font-size: 12px; color: #999;">(This is the image we want Twitter to grab)</div>
+    <img src="https://cdn-docs.vizard.ai/0-web-static/image/home/who_we_help_image2.webp" width="300" alt="Preview">
+
+    <br><br>
+
+    <a id="shareBtn" class="btn" href="#" target="_blank">
+        Share to Twitter
+    </a>
+</div>
+
+<script>
+    // 当页面加载时，自动生成 Twitter 分享链接
+    // 这里的逻辑是：让 Twitter 分享 "当前这个页面的地址"
+    const currentUrl = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent("Just testing the Vizard Report sharing flow! 🚀");
+
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${text}&url=${currentUrl}`;
+
+    document.getElementById('shareBtn').href = twitterUrl;
+</script>
+</body>
+</html>
